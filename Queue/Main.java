@@ -16,7 +16,7 @@ public class Main {
 
         }
         // System.out.println(temp.frontValue());
-        //temp.clear();
+        // temp.clear();
         System.out.print("<");
         for (int i = 0; i < arr.size(); i++) {
             System.out.print(arr.get(i) + " ");
@@ -28,6 +28,7 @@ public class Main {
         }
         // System.out.println("frontvalue "+temp.front.next().element());
     }
+
     public static void print(LQueue<Integer> temp) {
         // System.out.println("temp l "+temp.length());
         ArrayList<Integer> arr = new ArrayList<Integer>();
@@ -42,7 +43,7 @@ public class Main {
 
         }
         // System.out.println(temp.frontValue());
-        //temp.clear();
+        // temp.clear();
         System.out.print("<");
         for (int i = 0; i < arr.size(); i++) {
             System.out.print(arr.get(i) + " ");
@@ -56,7 +57,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //AQueue<Integer> aq = new AQueue<>(1);
+        // AQueue<Integer> aq = new AQueue<>(1);
         LQueue<Integer> aq = new LQueue<>(1);
         int a;
         Scanner sc = new Scanner(System.in);
@@ -82,13 +83,11 @@ public class Main {
                 print(aq);
                 System.out.println(-1);
 
-
             } else if (q == 2) {
 
                 aq.enqueue(p);
                 print(aq);
                 System.out.println(-1);
-
 
             } else if (q == 3) {
                 Integer s = aq.dequeue();
@@ -104,16 +103,14 @@ public class Main {
                 print(aq);
                 System.out.println(aq.frontValue());
 
-
             } else if (q == 6) {
 
                 // sta.setDirection(p);
                 print(aq);
                 System.out.println(aq.rearValue());
 
-
             } else {
-                Integer s=aq.leaveQueue();
+                Integer s = aq.leaveQueue();
                 print(aq);
                 System.out.println(s);
             }

@@ -16,19 +16,20 @@ class AQueue<E> implements Queue<E> {
     }
 
     @SuppressWarnings("unchecked")
-        // For generic array
+    // For generic array
     AQueue(int size) {
         maxSize = size + 1; // One extra space is allocated
         rear = 0;
         front = 1;
-        this.size=0;
+        this.size = 0;
         listArray = (E[]) new Object[maxSize]; // Create listArray
     }
+
     AQueue(E[] array) {
         maxSize = size + 1; // One extra space is allocated
         rear = 0;
         front = 1;
-        this.size=0;
+        this.size = 0;
         listArray = array; // Create listArray
     }
 
@@ -36,41 +37,40 @@ class AQueue<E> implements Queue<E> {
         rear = 0;
         front = 1;
         listArray = (E[]) new Object[maxSize];
-        size=0;
+        size = 0;
     }
 
     /**
      * Put "it" in queue
      */
     public void enqueue(E it) {
-     //   assert ((rear + 2) % maxSize) != front : "Queue is full";
-        if(!(((rear + 2) % maxSize) != front)){
-           // System.out.println("in if");
-           // System.out.println(this.length());
-            ArrayList<E> arr=new ArrayList<E>();
-            while(this.length()!=0){
-               // System.out.println(this.length());
-                E temp=this.dequeue();
+        // assert ((rear + 2) % maxSize) != front : "Queue is full";
+        if (!(((rear + 2) % maxSize) != front)) {
+            // System.out.println("in if");
+            // System.out.println(this.length());
+            ArrayList<E> arr = new ArrayList<E>();
+            while (this.length() != 0) {
+                // System.out.println(this.length());
+                E temp = this.dequeue();
                 arr.add(temp);
 
             }
 
-            maxSize=2*maxSize+1;
-            listArray= (E[]) new Object[maxSize];
+            maxSize = 2 * maxSize + 1;
+            listArray = (E[]) new Object[maxSize];
 
-            rear=0;
-            front=1;
-            for(int i=0;i<arr.size();i++){
+            rear = 0;
+            front = 1;
+            for (int i = 0; i < arr.size(); i++) {
                 rear = (rear + 1) % maxSize; // Circular increment
                 listArray[rear] = arr.get(i);
             }
             rear = (rear + 1) % maxSize; // Circular increment
             listArray[rear] = it;
-          //  System.out.println(this.length());
+            // System.out.println(this.length());
             size++;
 
-        }
-        else {
+        } else {
             rear = (rear + 1) % maxSize; // Circular increment
             listArray[rear] = it;
             size++;
@@ -78,20 +78,20 @@ class AQueue<E> implements Queue<E> {
     }
 
     public E dequeue() {
-  //      assert length() != 0 : "Queue is empty";
-        if(this.length()==0){
+        // assert length() != 0 : "Queue is empty";
+        if (this.length() == 0) {
             return null;
         }
         E it = listArray[front];
-        listArray[front]=null;
+        listArray[front] = null;
         front = (front + 1) % maxSize; // Circular increment
         size--;
         return it;
     }
 
     public E frontValue() {
-      //  assert length() != 0 : "Queue is empty";
-        if(this.length()==0){
+        // assert length() != 0 : "Queue is empty";
+        if (this.length() == 0) {
             return null;
         }
         return listArray[front];
@@ -99,7 +99,7 @@ class AQueue<E> implements Queue<E> {
 
     @Override
     public E rearValue() {
-        if(this.length()==0){
+        if (this.length() == 0) {
             return null;
         }
         return listArray[rear];
@@ -111,15 +111,15 @@ class AQueue<E> implements Queue<E> {
 
     @Override
     public E leaveQueue() {
-        if(this.length()==0){
+        if (this.length() == 0) {
             return null;
         }
-        E it=listArray[rear];
-        listArray[rear]=null;
-        rear = (rear+ maxSize - 1) % maxSize;
+        E it = listArray[rear];
+        listArray[rear] = null;
+        rear = (rear + maxSize - 1) % maxSize;
         size--;
 
-       // System.out.println("rear "+rear);
+        // System.out.println("rear "+rear);
         return it;
 
     }

@@ -16,8 +16,7 @@ public class Main {
                 Integer i = bst.find(Integer.valueOf(s[1]));
                 if (i == null) {
                     System.out.println("False");
-                }
-                else {
+                } else {
                     System.out.println("True");
                 }
             }
@@ -32,15 +31,12 @@ public class Main {
 
                 if (s[1].equals("Pre")) {
                     bst.preorder();
-                }
-                else if (s[1].equals("In")) {
+                } else if (s[1].equals("In")) {
                     bst.inorder();
-                }
-                else if (s[1].equals("Post")) {
+                } else if (s[1].equals("Post")) {
                     bst.postorder();
                 }
-            }
-            else if (s[0].equals("D")) {
+            } else if (s[0].equals("D")) {
 
                 if (bst.find(Integer.valueOf(s[1])) == null) {
                     System.out.println("Invalid Operation");

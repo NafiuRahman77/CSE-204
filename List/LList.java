@@ -1,6 +1,6 @@
-public class LList<E> implements List{
-    private Node<E> headptr; //  headptrer
-    private Node<E> tailptr; //  last element
+public class LList<E> implements List {
+    private Node<E> headptr; // headptrer
+    private Node<E> tailptr; // last element
     private Node<E> currptr; // currptrent element pointer
     private int cnt;
 
@@ -10,21 +10,23 @@ public class LList<E> implements List{
     }
 
     LList(E[] temp) {
-        currptr = tailptr =headptr = new Node<E>(null); // Create headptrer
-        for(int i=0;i<temp.length;i++){
+        currptr = tailptr = headptr = new Node<E>(null); // Create headptrer
+        for (int i = 0; i < temp.length; i++) {
             this.append(temp[i]);
         }
     }
+
     LList(int init, int size, E[] temp) {
         currptr = tailptr = headptr = new Node<E>(null); // Create headptrer
-        for(int i=0;i<temp.length;i++){
+        for (int i = 0; i < temp.length; i++) {
             this.append(temp[i]);
         }
     }
-    LList(int init, int size, List<E>temp) {
+
+    LList(int init, int size, List<E> temp) {
         temp.moveToStart();
         currptr = tailptr = headptr = new Node<E>(null); // Create headptrer
-        for(int i=0;i<temp.length();i++){
+        for (int i = 0; i < temp.length(); i++) {
             this.append(temp.getValue());
             temp.next();
         }
@@ -55,29 +57,28 @@ public class LList<E> implements List{
 
     @Override
     public Object remove() {
-        if (currptr.next() == null|| headptr.next()==null)
-        {
+        if (currptr.next() == null || headptr.next() == null) {
             return null; // Nothing to remove
         }
         E it = currptr.next().element(); // Remember value
         if (tailptr == currptr.next()) { // If the currptr points to last element
 
-            if(headptr==currptr){
+            if (headptr == currptr) {
                 cnt--;
                 headptr.setNext(null); // Drop access to Nodes
                 currptr = tailptr = headptr = new Node<E>(null);
                 return it;
             }
-            Node<E> temp=headptr;
-            Node<E> temp2=headptr;
+            Node<E> temp = headptr;
+            Node<E> temp2 = headptr;
             while (temp.next() != currptr) {
                 temp = temp.next();
             }
-            currptr=temp;
+            currptr = temp;
             while (temp2.next() != tailptr) {
                 temp2 = temp2.next();
             }
-            tailptr= temp2;
+            tailptr = temp2;
             cnt--; // Decrement count
             return it;
         }
@@ -88,7 +89,7 @@ public class LList<E> implements List{
 
     @Override
     public void moveToStart() {
-        currptr=headptr;
+        currptr = headptr;
     }
 
     @Override
@@ -99,7 +100,7 @@ public class LList<E> implements List{
         while (temp.next() != tailptr) {
             temp = temp.next();
         }
-        currptr=temp;
+        currptr = temp;
     }
 
     @Override
@@ -119,8 +120,7 @@ public class LList<E> implements List{
     public void next() {
         if (currptr.next() != tailptr) {
             currptr = currptr.next();
-        }
-        else{
+        } else {
             return;
         }
 
@@ -135,27 +135,27 @@ public class LList<E> implements List{
     public int currPos() {
         Node<E> temp = headptr;
         int i;
-        for (i=0; currptr != temp; i++)
+        for (i = 0; currptr != temp; i++)
             temp = temp.next();
         return i;
     }
 
     @Override
-    public void moveToPos(int pos){
-        if(!((pos>=0) && (pos<cnt))){
+    public void moveToPos(int pos) {
+        if (!((pos >= 0) && (pos < cnt))) {
             return;
         }
 
-//        assert (pos>=0) && (pos<=cnt) : "Position out of range";
+        // assert (pos>=0) && (pos<=cnt) : "Position out of range";
         currptr = headptr;
-        for(int i=0; i<pos; i++){
+        for (int i = 0; i < pos; i++) {
             currptr = currptr.next();
         }
     }
 
     @Override
     public Object getValue() {
-        if(currptr.next() == null) {
+        if (currptr.next() == null) {
             return null;
         }
         return currptr.next().element();
@@ -164,9 +164,9 @@ public class LList<E> implements List{
     @Override
     public int Search(Object item) {
         Node<E> temp = headptr;
-        for(int i=0; i<cnt; i++){
+        for (int i = 0; i < cnt; i++) {
             temp = temp.next();
-            if(temp.element()==item){
+            if (temp.element() == item) {
                 return 1;
             }
 
